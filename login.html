@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+    #mes {
+      color: white;
+    }
+
+    .parent {
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(50px);
+      position: absolute;
+      top: 40%;
+      left: 5%;
+      height: 40px;
+    }
+
+    #fname {
+      position: absolute;
+      top: 100px;
+      margin: 20px;
+    }
+
+    #lname {
+      position: absolute;
+      top: 150px;
+      margin: 20px;
+    }
+
+    #email {
+      position: absolute;
+      top: 200px;
+      margin: 20px;
+    }
+
+    #submit {
+      position: absolute;
+      top: 250px;
+      margin: 20px;
+    }
+  </style>
+</head>
+
+<body background="hh\logo.jpg">
+  <div class="parent">
+    <h1 id="mes">Hi sir\ma'am get your email logged in to get notified whenever a new version of this app or a new app is launched</h1>
+    <input type="text" id="fname" placeholder="first name">
+    <input type="text" id="lname" placeholder="last name">
+    <input type="email" id="email" placeholder="your email">
+    <input type="button" value="submit" id="submit" onclick="submit()">
+  </div>
+
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    function submit() {
+      var a = document.getElementById("fname").value;
+      var b = document.getElementById("lname").value;
+      var c = document.getElementById("email").value;
+      var d = a + ' ' + b + ' ' + c;
+
+      emailjs.init("15i5C7tCk0gqHoLn3");
+      var templateParams = {
+        to_email: 'teamdev917@gmail.com',
+        message: d
+      };
+      emailjs.send('service_08fejco', 'template_g63qx4f', templateParams)
+        .then(function(response) {
+          alert("data sent to server");
+        }, function(error) {
+          alert(error);
+        });
+    }
+  </script>
+</body>
+
+</html>
